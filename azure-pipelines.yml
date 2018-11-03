@@ -11,4 +11,10 @@ steps:
 - script: |
     echo Cloning Pkg
     git clone https://github.com/JuliaLang/Pkg.jl /tmp/Pkg
+    # Apply patch
+    CIBOT_EMAIL="bot@ci.bot"
+    CIBOT_NAME="CIBot"
+    git config --global user.email $CIBOT_EMAIL
+    git config --global user.name $CIBOT_NAME
+    git -C /tmp/Pkg cherry-pick 6ed7294d5a8b6c773c01d9a6a84fd21a82c10903
   displayName: 'Clone Pkg'
